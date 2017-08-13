@@ -70,7 +70,7 @@ static inline int cpu_idle_poll(void)
 	while (!tif_need_resched() &&
 	       (cpu_idle_force_poll
 #ifdef CONFIG_SCHED_IDLE_FORCEPOLL
-		|| __get_cpu_var(idle_force_poll)
+		|| tick_check_broadcast_expired()
 #endif
 		))
 		cpu_relax();
